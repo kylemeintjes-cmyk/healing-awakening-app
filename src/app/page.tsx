@@ -41,9 +41,9 @@ const steps = [
     href: "/capital",
   },
   {
-    title: "Joy OS",
-    detail: "Track joy and confidence, then run weekly joy-first growth plans.",
-    href: "/joy",
+    title: "Human OS",
+    detail: "Diagnose bottlenecks, regulate state, and compound clarity + execution.",
+    href: "/human",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function Home() {
           <Link href="/plan">Plan</Link>
           <Link href="/oracle">Oracle</Link>
           <Link href="/capital">Capital</Link>
-          <Link href="/joy">Joy</Link>
+          <Link href="/human">Human OS</Link>
           <Link href="/library">Meditations</Link>
         </nav>
       </header>
@@ -111,8 +111,8 @@ export default function Home() {
             <Link className="ghost" href="/capital">
               Open capital OS
             </Link>
-            <Link className="ghost" href="/joy">
-              Open joy OS
+            <Link className="ghost" href="/human">
+              Open Human OS
             </Link>
             <Link className="ghost" href="/login">
               Sign in
@@ -123,13 +123,13 @@ export default function Home() {
 
       <section className="card stack mt-8">
         <p className="pill">New</p>
-        <h3 className="section-title">Joy OS: feel better and grow faster</h3>
+        <h3 className="section-title">Human OS: measurable self-actualization</h3>
         <p className="subtle">
-          Run a quick daily joy check-in, get adaptive guidance, and build a weekly plan that compounds joy and money confidence.
+          Precision nervous-system and cognition optimization with AI-guided diagnostics, decision quality scoring, and execution loops.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link className="cta" href="/joy">
-            Launch Joy OS
+          <Link className="cta" href="/human">
+            Launch Human OS
           </Link>
           <Link className="ghost" href="/capital">
             Pair with Capital OS

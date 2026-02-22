@@ -11,8 +11,8 @@ export default function CapitalPage() {
           Detect blockers, rank opportunities, execute daily, and adapt weekly.
         </p>
         <div>
-          <Link className="ghost" href="/joy">
-            Open Joy OS
+          <Link className="ghost" href="/human">
+            Open Human OS
           </Link>
         </div>
       </header>
