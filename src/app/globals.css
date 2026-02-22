@@ -211,3 +211,113 @@ a {
   display: grid;
   gap: 6px;
 }
+
+.joy-console {
+  gap: 18px;
+}
+
+.joy-metric-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.joy-plan-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.joy-chart-shell {
+  background: linear-gradient(145deg, #ffffff 0%, #f7f6f2 100%);
+}
+
+.joy-chart-frame {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.joy-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.joy-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.joy-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.joy-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2f3a59;
+}
+
+.joy-legend-swatch-money {
+  background: #1d6b33;
+}
+
+.joy-legend-swatch-stability {
+  background: #c46d16;
+}
+
+.joy-delta-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.joy-delta-card {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: #ffffff;
+}
+
+.joy-delta-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(18, 18, 26, 0.08);
+}
+
+.joy-delta-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+@media (max-width: 880px) {
+  .joy-plan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .joy-delta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .joy-metric-grid,
+  .joy-plan-grid,
+  .joy-delta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .joy-chart-frame {
+    padding: 8px;
+  }
+}

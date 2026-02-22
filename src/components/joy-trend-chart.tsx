@@ -85,32 +85,43 @@ export function JoyTrendChart({ entries, analytics }: JoyTrendChartProps) {
 
   return (
     <div className="stack">
-      <div className="list-item">
+      <div className="list-item joy-chart-shell">
         <p className="text-sm"><strong>Score trends</strong></p>
-        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-label="Joy score trends">
-          {[0, 2, 4, 6, 8, 10].map((value) => (
-            <g key={value}>
-              <line
-                x1={PADDING_X}
-                x2={WIDTH - PADDING_X}
-                y1={axisLabelY(value)}
-                y2={axisLabelY(value)}
-                stroke="rgba(18, 18, 26, 0.12)"
-                strokeWidth={1}
-              />
-              <text x={4} y={axisLabelY(value) + 4} fontSize={10} fill="#5f606a">
-                {value}
-              </text>
-            </g>
-          ))}
-          <path d={joyPath} fill="none" stroke="#2f3a59" strokeWidth={3} strokeLinecap="round" />
-          <path d={confidencePath} fill="none" stroke="#1d6b33" strokeWidth={3} strokeLinecap="round" />
-          <path d={stabilityPath} fill="none" stroke="#c46d16" strokeWidth={3} strokeLinecap="round" />
-        </svg>
-        <div className="flex flex-wrap gap-3 text-sm">
-          <span>Joy</span>
-          <span style={{ color: "#1d6b33" }}>Money confidence</span>
-          <span style={{ color: "#c46d16" }}>Life stability</span>
+        <div className="joy-chart-frame">
+          <svg className="joy-chart-svg" viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-label="Joy score trends">
+            {[0, 2, 4, 6, 8, 10].map((value) => (
+              <g key={value}>
+                <line
+                  x1={PADDING_X}
+                  x2={WIDTH - PADDING_X}
+                  y1={axisLabelY(value)}
+                  y2={axisLabelY(value)}
+                  stroke="rgba(18, 18, 26, 0.12)"
+                  strokeWidth={1}
+                />
+                <text x={4} y={axisLabelY(value) + 4} fontSize={10} fill="#5f606a">
+                  {value}
+                </text>
+              </g>
+            ))}
+            <path d={joyPath} fill="none" stroke="#2f3a59" strokeWidth={3} strokeLinecap="round" />
+            <path d={confidencePath} fill="none" stroke="#1d6b33" strokeWidth={3} strokeLinecap="round" />
+            <path d={stabilityPath} fill="none" stroke="#c46d16" strokeWidth={3} strokeLinecap="round" />
+          </svg>
+        </div>
+        <div className="joy-chart-legend">
+          <span className="joy-legend-item">
+            <span className="joy-legend-swatch" />
+            Joy
+          </span>
+          <span className="joy-legend-item">
+            <span className="joy-legend-swatch joy-legend-swatch-money" />
+            Money confidence
+          </span>
+          <span className="joy-legend-item">
+            <span className="joy-legend-swatch joy-legend-swatch-stability" />
+            Life stability
+          </span>
         </div>
         <p className="subtle text-xs">
           Showing last {points.length} check-ins ({points[0]?.label} to {points[points.length - 1]?.label}).
@@ -119,46 +130,43 @@ export function JoyTrendChart({ entries, analytics }: JoyTrendChartProps) {
 
       <div className="list-item">
         <p className="text-sm"><strong>Delta bars</strong></p>
-        <div className="stack">
+        <div className="joy-delta-grid">
           {analytics.deltas.map((delta) => (
-            <div key={delta.period} className="stack" style={{ gap: 6 }}>
+            <div key={delta.period} className="joy-delta-card">
               <p className="subtle text-xs">{delta.period.toUpperCase()}</p>
               <div>
                 <p className="text-xs">Joy {delta.joyDelta >= 0 ? "+" : ""}{delta.joyDelta}</p>
-                <div style={{ height: 8, background: "rgba(18, 18, 26, 0.08)", borderRadius: 999 }}>
+                <div className="joy-delta-track">
                   <div
                     style={{
                       width: deltaBarWidth(delta.joyDelta),
-                      height: "100%",
-                      borderRadius: 999,
                       background: deltaTone(delta.joyDelta),
                     }}
+                    className="joy-delta-fill"
                   />
                 </div>
               </div>
               <div>
                 <p className="text-xs">Stability {delta.stabilityDelta >= 0 ? "+" : ""}{delta.stabilityDelta}</p>
-                <div style={{ height: 8, background: "rgba(18, 18, 26, 0.08)", borderRadius: 999 }}>
+                <div className="joy-delta-track">
                   <div
                     style={{
                       width: deltaBarWidth(delta.stabilityDelta),
-                      height: "100%",
-                      borderRadius: 999,
                       background: deltaTone(delta.stabilityDelta),
                     }}
+                    className="joy-delta-fill"
                   />
                 </div>
               </div>
               <div>
                 <p className="text-xs">Confidence {delta.confidenceDelta >= 0 ? "+" : ""}{delta.confidenceDelta}</p>
-                <div style={{ height: 8, background: "rgba(18, 18, 26, 0.08)", borderRadius: 999 }}>
+                <div className="joy-delta-track">
                   <div
                     style={{
                       width: deltaBarWidth(delta.confidenceDelta),
-                      height: "100%",
-                      borderRadius: 999,
                       background: deltaTone(delta.confidenceDelta),
                     }}
+                    className="joy-delta-fill"
                   />
                 </div>
               </div>

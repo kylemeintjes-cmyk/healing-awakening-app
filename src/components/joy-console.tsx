@@ -200,7 +200,7 @@ export function JoyConsole() {
   }
 
   return (
-    <section className="card stack">
+    <section className="card stack joy-console">
       <div className="oracle-head">
         <p className="pill">Joy OS</p>
       </div>
@@ -232,7 +232,7 @@ export function JoyConsole() {
         <div className="stack oracle-reply">
           <h3 className="text-lg">Daily Joy Check-In</h3>
           <p className="subtle text-sm">Track six signals (1-10) and get adaptive guidance for today.</p>
-          <div className="flex flex-wrap gap-3">
+          <div className="joy-metric-grid">
             <input className="input" value={checkinInput.joy} onChange={(e) => setCheckinInput((p) => ({ ...p, joy: e.target.value }))} placeholder="Joy (1-10)" />
             <input className="input" value={checkinInput.meaning} onChange={(e) => setCheckinInput((p) => ({ ...p, meaning: e.target.value }))} placeholder="Meaning (1-10)" />
             <input className="input" value={checkinInput.connection} onChange={(e) => setCheckinInput((p) => ({ ...p, connection: e.target.value }))} placeholder="Connection (1-10)" />
@@ -284,7 +284,7 @@ export function JoyConsole() {
           <h3 className="text-lg">Weekly Joy Plan</h3>
           <p className="subtle text-sm">Create one high-leverage week with joy, income actions, and accountability.</p>
           <textarea className="textarea" value={planProfile.vision} onChange={(e) => setPlanProfile((p) => ({ ...p, vision: e.target.value }))} placeholder="Vision for this week" />
-          <div className="flex flex-wrap gap-3">
+          <div className="joy-plan-grid">
             <select className="input" value={planProfile.focusArea} onChange={(e) => setPlanProfile((p) => ({ ...p, focusArea: e.target.value as JoyFocusArea }))}>
               <option value="balance">Balance</option>
               <option value="energy">Energy</option>
@@ -296,7 +296,7 @@ export function JoyConsole() {
             <input className="input" value={String(planProfile.availableHours)} onChange={(e) => setPlanProfile((p) => ({ ...p, availableHours: toNumber(e.target.value, 12) }))} placeholder="Hours available" />
             <input className="input" value={String(planProfile.spendBudget)} onChange={(e) => setPlanProfile((p) => ({ ...p, spendBudget: toNumber(e.target.value, 0) }))} placeholder="Weekly joy budget" />
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="joy-plan-grid">
             <select className="input" value={planProfile.socialMode} onChange={(e) => setPlanProfile((p) => ({ ...p, socialMode: e.target.value as JoySocialMode }))}>
               <option value="solo">Solo</option>
               <option value="mixed">Mixed</option>
