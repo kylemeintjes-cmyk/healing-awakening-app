@@ -1,8 +1,18 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useAuthUser } from "@/lib/useAuth";
 import { OracleConsole } from "@/components/oracle-console";
+
+type RecommendedSession = {
+  id: string;
+  title: string;
+  type: string;
+  durationMinutes: number;
+  intensity: string;
+  description?: string;
+};
 
 const steps = [
   {
@@ -30,11 +40,16 @@ const steps = [
     detail: "Turn skills into cashflow and compound capital weekly.",
     href: "/capital",
   },
+  {
+    title: "Joy OS",
+    detail: "Track joy and confidence, then run weekly joy-first growth plans.",
+    href: "/joy",
+  },
 ];
 
 export default function Home() {
   const { user } = useAuthUser();
-  const [recommended, setRecommended] = React.useState<any[]>([]);
+  const [recommended, setRecommended] = React.useState<RecommendedSession[]>([]);
   const [rationale, setRationale] = React.useState("");
   const [error, setError] = React.useState("");
 
@@ -67,12 +82,13 @@ export default function Home() {
           <h1 className="section-title">Healing and awakening, made simple.</h1>
         </div>
         <nav className="stack">
-          <a href="/onboarding">Onboarding</a>
-          <a href="/intake">Start</a>
-          <a href="/plan">Plan</a>
-          <a href="/oracle">Oracle</a>
-          <a href="/capital">Capital</a>
-          <a href="/library">Meditations</a>
+          <Link href="/onboarding">Onboarding</Link>
+          <Link href="/intake">Start</Link>
+          <Link href="/plan">Plan</Link>
+          <Link href="/oracle">Oracle</Link>
+          <Link href="/capital">Capital</Link>
+          <Link href="/joy">Joy</Link>
+          <Link href="/library">Meditations</Link>
         </nav>
       </header>
 
@@ -89,16 +105,35 @@ export default function Home() {
             check-ins, and your personalized plan.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a className="cta" href="/oracle">
+            <Link className="cta" href="/oracle">
               Open oracle
-            </a>
-            <a className="ghost" href="/capital">
+            </Link>
+            <Link className="ghost" href="/capital">
               Open capital OS
-            </a>
-            <a className="ghost" href="/login">
+            </Link>
+            <Link className="ghost" href="/joy">
+              Open joy OS
+            </Link>
+            <Link className="ghost" href="/login">
               Sign in
-            </a>
+            </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="card stack mt-8">
+        <p className="pill">New</p>
+        <h3 className="section-title">Joy OS: feel better and grow faster</h3>
+        <p className="subtle">
+          Run a quick daily joy check-in, get adaptive guidance, and build a weekly plan that compounds joy and money confidence.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link className="cta" href="/joy">
+            Launch Joy OS
+          </Link>
+          <Link className="ghost" href="/capital">
+            Pair with Capital OS
+          </Link>
         </div>
       </section>
 
@@ -108,15 +143,15 @@ export default function Home() {
       </section>
 
       <section className="stack mt-8">
-        <h3 className="section-title">Today's plan</h3>
+        <h3 className="section-title">Today&apos;s plan</h3>
         {!user ? (
           <div className="list-item">
             <p className="subtle">
               Sign in to see a personalized plan and recommendations.
             </p>
-            <a className="cta mt-3" href="/login">
+            <Link className="cta mt-3" href="/login">
               Sign in
-            </a>
+            </Link>
           </div>
         ) : recommended.length === 0 ? (
           <div className="list-item">
@@ -124,12 +159,12 @@ export default function Home() {
               Add sessions in Admin and complete onboarding to get recommendations.
             </p>
             <div className="flex flex-wrap gap-3 mt-3">
-              <a className="cta" href="/onboarding">
+              <Link className="cta" href="/onboarding">
                 Complete onboarding
-              </a>
-              <a className="ghost" href="/admin">
+              </Link>
+              <Link className="ghost" href="/admin">
                 Add sessions
-              </a>
+              </Link>
             </div>
           </div>
         ) : (
@@ -155,10 +190,10 @@ export default function Home() {
         <h3 className="section-title">How it works</h3>
         <div className="list">
           {steps.map((step) => (
-            <a key={step.title} className="list-item" href={step.href}>
+            <Link key={step.title} className="list-item" href={step.href}>
               <h4 className="text-lg">{step.title}</h4>
               <p className="subtle mt-2">{step.detail}</p>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

@@ -7,6 +7,7 @@ type RiskTolerance = "low" | "medium" | "high";
 
 type CapitalPlan = {
   planId: string;
+  generatedAt: string;
   blockers: Array<{
     id: string;
     title: string;
@@ -86,6 +87,7 @@ type CapitalSimulation = {
 
 export function CapitalConsole() {
   const { user, loading } = useAuthUser();
+  const latestPlanLoadedRef = React.useRef(false);
   const [stage, setStage] = React.useState<"plan" | "execute" | "analyze">("plan");
   const [goal, setGoal] = React.useState("Build durable monthly cashflow and compound capital.");
   const [topSkills, setTopSkills] = React.useState("AI automation, negotiation, systems design");
@@ -100,6 +102,8 @@ export function CapitalConsole() {
   const [plan, setPlan] = React.useState<CapitalPlan | null>(null);
   const [error, setError] = React.useState("");
   const [sending, setSending] = React.useState(false);
+  const [restoringPlan, setRestoringPlan] = React.useState(false);
+  const [resumedPlanAt, setResumedPlanAt] = React.useState<string | null>(null);
 
   const [checkin, setCheckin] = React.useState({
     completedActions: "3",
@@ -122,6 +126,46 @@ export function CapitalConsole() {
     annualReturnDownside: "3",
     months: "24",
   });
+
+  React.useEffect(() => {
+    if (!user) {
+      latestPlanLoadedRef.current = false;
+      setPlan(null);
+      setResumedPlanAt(null);
+      setStage("plan");
+      return;
+    }
+    if (latestPlanLoadedRef.current) return;
+
+    latestPlanLoadedRef.current = true;
+    let cancelled = false;
+
+    (async () => {
+      setRestoringPlan(true);
+      try {
+        const token = await user.getIdToken();
+        const res = await fetch("/api/capital/latest", {
+          headers: { authorization: `Bearer ${token}` },
+        });
+        if (!res.ok || cancelled) return;
+
+        const data = (await res.json()) as { latestPlan: CapitalPlan | null };
+        if (!data.latestPlan || cancelled) return;
+
+        setPlan(data.latestPlan);
+        setStage("execute");
+        setResumedPlanAt(data.latestPlan.generatedAt ?? null);
+        setCheckinResult(null);
+        setReviewResult(null);
+      } finally {
+        if (!cancelled) setRestoringPlan(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   async function buildPlan() {
     if (!user) {
@@ -155,6 +199,7 @@ export function CapitalConsole() {
       }
       const data = (await res.json()) as { plan: CapitalPlan };
       setPlan(data.plan);
+      setResumedPlanAt(null);
       setCheckinResult(null);
       setReviewResult(null);
       setStage("execute");
@@ -270,6 +315,8 @@ export function CapitalConsole() {
           Sign in to run Capital OS {"->"}
         </a>
       )}
+      {restoringPlan && <p className="subtle text-sm">Restoring your latest saved plan...</p>}
+      {resumedPlanAt && <p className="subtle text-sm">Resumed your latest plan from {new Date(resumedPlanAt).toLocaleString()}.</p>}
 
       {stage === "plan" && (
         <>
