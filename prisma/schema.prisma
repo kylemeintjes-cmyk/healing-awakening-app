@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id         String   @id
+  email      String?
+  name       String?
+  preferences Json?
+  onboarding  Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  intakes    Intake[]
+  plans      Plan[]
+  journals   JournalEntry[]
+  checkins   Checkin[]
+}
+
+model Intake {
+  id         String   @id @default(uuid())
+  userId     String
+  stuck      String
+  energy     String
+  conditions String
+  goal       String
+  meditation String
+  limits     String
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+  plan       Plan?
+}
+
+model Plan {
+  id        String   @id @default(uuid())
+  userId    String
+  intakeId  String?  @unique
+  title     String
+  status    String
+  items     Json
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  intake    Intake?  @relation(fields: [intakeId], references: [id])
+}
+
+model JournalEntry {
+  id        String   @id @default(uuid())
+  userId    String
+  prompt    String
+  body      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Checkin {
+  id        String   @id @default(uuid())
+  userId    String
+  energy    Int
+  mood      Int      @default(0)
+  stress    Int      @default(0)
+  sleep     Int      @default(0)
+  tension   Int      @default(0)
+  symptom   String
+  tone      String
+  readiness String
+  note      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model SessionContent {
+  id                 String   @id @default(uuid())
+  title              String
+  type               String
+  url                String
+  durationMinutes    Int
+  description        String
+  tags               Json
+  intensity          String
+  contraindications  Json
+  createdAt          DateTime @default(now())
+}

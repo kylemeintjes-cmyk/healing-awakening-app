@@ -1,0 +1,38 @@
+{
+  "name": "healing-awakening-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "oracle:model": "powershell -ExecutionPolicy Bypass -File .\\scripts\\start-oracle-model.ps1",
+    "oracle:model:stop": "powershell -ExecutionPolicy Bypass -File .\\scripts\\stop-oracle-model.ps1",
+    "oracle:dataset": "node .\\scripts\\export-oracle-dataset.mjs",
+    "oracle:sft:build": "node .\\scripts\\build-oracle-sft.mjs",
+    "oracle:benchmark": "node .\\scripts\\benchmark-oracle.mjs"
+  },
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.4.1",
+    "@prisma/client": "^7.4.0",
+    "better-sqlite3": "^12.6.2",
+    "circular-natal-horoscope-js": "^1.1.0",
+    "firebase": "^12.9.0",
+    "firebase-admin": "^13.6.1",
+    "next": "16.1.6",
+    "prisma": "^7.4.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

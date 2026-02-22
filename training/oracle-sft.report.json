@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-02-20T15:35:26.966Z",
+  "corpusRows": 15,
+  "corpusFiles": [
+    "astrology_sign_profiles.jsonl",
+    "examples.jsonl"
+  ],
+  "helpfulFeedbackRows": 0,
+  "finalRows": 15,
+  "output": "C:\\Users\\kylem\\Documents\\healing-awakening-app\\training\\oracle-sft.merged.jsonl"
+}
