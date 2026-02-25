@@ -1,0 +1,14 @@
+{{header
+ | title      = Gettysburg Address 
+ | author     = |override_author=[[Author:Abraham Lincoln|Abraham Lincoln]]
+ | translator = 
+ | section    = 
+ | previous   = 
+ | next       = 
+ | year       = 
+ | notes      = The Bliss copy, once owned by the family of Colonel Alexander Bliss, Bancroft's stepson and publisher of "Autograph Leaves", is the only manuscript to which Lincoln affixed his signature.
+{{similar|Gettysburg Address}}
+}}
+<pages index="Blisscopy-1.jpg" from="Blisscopy-1.jpg" to="Blisscopy-3.jpg" />
+
+{{pd-old}}

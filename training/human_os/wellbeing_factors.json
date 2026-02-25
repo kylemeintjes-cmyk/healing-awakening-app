@@ -1,0 +1,86 @@
+[
+  {
+    "id": "sleep",
+    "name": "Sleep Quality",
+    "whyItMatters": "Sleep strongly impacts cognition, emotional regulation, and execution reliability.",
+    "keywords": ["sleep", "rest", "insomnia", "tired", "fatigue"],
+    "lowSignals": ["waking exhausted", "afternoon crash", "irritability", "poor focus"],
+    "actions": [
+      "Set fixed sleep and wake times for the next 7 days.",
+      "Use a 30-minute low-stimulation wind-down without screens.",
+      "No caffeine after midday and track sleep score daily."
+    ]
+  },
+  {
+    "id": "stress-regulation",
+    "name": "Stress Regulation",
+    "whyItMatters": "High stress load narrows thinking and reduces decision quality.",
+    "keywords": ["stress", "anxiety", "overwhelm", "pressure", "panic"],
+    "lowSignals": ["racing thoughts", "body tension", "reactivity", "avoidance"],
+    "actions": [
+      "Run a 5-minute downshift protocol (slow exhale breathing) before deep work.",
+      "Take one 10-minute no-phone regulation walk daily.",
+      "Reduce daily commitments by one low-impact task."
+    ]
+  },
+  {
+    "id": "goal-direction",
+    "name": "Goal Direction",
+    "whyItMatters": "Clear direction reduces cognitive drag and improves meaningful progress.",
+    "keywords": ["goal", "purpose", "direction", "vision", "focus"],
+    "lowSignals": ["starting many things", "frequent pivots", "unclear priorities"],
+    "actions": [
+      "Define one weekly outcome with a measurable success metric.",
+      "List top 3 priorities and delete one non-essential commitment.",
+      "Review progress at end of each day in 3 bullet points."
+    ]
+  },
+  {
+    "id": "execution",
+    "name": "Execution Reliability",
+    "whyItMatters": "Consistent action is the main bridge from intent to results.",
+    "keywords": ["execution", "procrastination", "discipline", "action", "consistency"],
+    "lowSignals": ["delay cycles", "low follow-through", "unfinished tasks"],
+    "actions": [
+      "Schedule one non-negotiable deep-work block at the same time daily.",
+      "Break first task into a 15-minute starter step.",
+      "Track completion rate and protect momentum with no zero days."
+    ]
+  },
+  {
+    "id": "relationships",
+    "name": "Relational Quality",
+    "whyItMatters": "Meaningful connection is a major predictor of wellbeing and life satisfaction.",
+    "keywords": ["relationship", "connection", "lonely", "conflict", "support"],
+    "lowSignals": ["social isolation", "draining conversations", "unspoken resentment"],
+    "actions": [
+      "Initiate one meaningful check-in with a trusted person.",
+      "Set one clear boundary on a draining interaction.",
+      "Plan one no-agenda connection moment this week."
+    ]
+  },
+  {
+    "id": "income",
+    "name": "Income Confidence",
+    "whyItMatters": "Financial security affects stress, agency, and long-term decision quality.",
+    "keywords": ["income", "money", "cashflow", "revenue", "finance"],
+    "lowSignals": ["avoid checking numbers", "inconsistent revenue actions", "financial anxiety"],
+    "actions": [
+      "Run one revenue-producing action before noon each weekday.",
+      "Track pipeline counts daily: outreach, conversations, proposals, closes.",
+      "Review weekly cashflow and set one clear money target."
+    ]
+  },
+  {
+    "id": "meaning-and-joy",
+    "name": "Meaning and Joy",
+    "whyItMatters": "Positive affect and meaning increase resilience and long-term sustainability.",
+    "keywords": ["joy", "meaning", "alive", "satisfaction", "gratitude"],
+    "lowSignals": ["emotional flatness", "chronic resentment", "no enjoyable moments"],
+    "actions": [
+      "Schedule one daily joy anchor before work ends.",
+      "Capture one gratitude and one win each evening.",
+      "Protect one meaningful activity block each week."
+    ]
+  }
+]

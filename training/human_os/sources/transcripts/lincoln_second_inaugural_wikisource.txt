@@ -1,0 +1,24 @@
+{{header
+ | title    = Abraham Lincoln's Second Inaugural Address
+ | author   = Abraham Lincoln
+ | section  =
+ | previous = [[Abraham Lincoln's First Inaugural Address]]
+ | next     = [[Ulysses S. Grant's First Inaugural Address]]
+ | wikipedia = Lincoln's second inaugural address
+ | year = 1865
+ | portal = Inaugural Speeches by United States Presidents
+ | notes    = Delivered on the East Portico of the United States Capitol Building in Washington, D.C. on 4 March 1865.<br>This edition is from Lincoln's ''[[Life and Works of Abraham Lincoln|Life and Works]]''.
+}}
+[[Image:Abraham_Lincoln_giving_his_second_Inaugural_Address_(4_March_1865).jpg|thumb|right|Abraham Lincoln delivering his second inaugural address at the United States Capitol Building]]
+
+<pages index="Life and Works of Abraham Lincoln, v6.djvu" from=245 to=247 fromsection=inaugural tosection=inaugural />
+
+{{PD-USGov}}
+[[Category:PD-USGov-POTUS]]
+
+[[category:U.S. Presidential Inaugural Addresses|Linc2]]
+
+
+[[bg:Ейбрахам Линкълн: Реч при повторно встъпване в длъжността президент на САЩ]]
+[[he:נאום ההשבעה השני של אברהם לינקולן]]
+[[ko:에이브러햄 링컨의 2기 취임사]]

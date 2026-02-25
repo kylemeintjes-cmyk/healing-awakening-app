@@ -48,6 +48,14 @@ llama-server -m C:\path\to\your-model.gguf --host 127.0.0.1 --port 1234 -c 4096
 - Run benchmark suite: `npm run oracle:benchmark`
 - Improvement guide: `MODEL_IMPROVEMENT.md`
 
+## Human OS Training Ops
+
+- Build knowledge chunks from books/transcripts: `npm run human:knowledge:build`
+- Build Human OS SFT dataset: `npm run human:sft:build`
+- Start OpenAI fine-tune job: `npm run human:ft:start -- --model <base_model_id>`
+- Check fine-tune status: `npm run human:ft:status`
+- Training docs and source folders: `training/human_os/README.md`
+
 ## Notes
 
 - Keep model calls server-side only.

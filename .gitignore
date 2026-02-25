@@ -43,3 +43,12 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# generated Human OS training artifacts
+/training/human-os-sft.jsonl
+/training/human-os-sft.report.json
+/training/human_os/knowledge.chunks.jsonl
+/training/human_os/knowledge.report.json
+/training/human_os/last-finetune-job.json
+/training/human_os/human-os-sft.openai.jsonl
+/training/human_os/human-os-validation.openai.jsonl

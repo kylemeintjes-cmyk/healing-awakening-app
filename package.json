@@ -11,7 +11,11 @@
     "oracle:model:stop": "powershell -ExecutionPolicy Bypass -File .\\scripts\\stop-oracle-model.ps1",
     "oracle:dataset": "node .\\scripts\\export-oracle-dataset.mjs",
     "oracle:sft:build": "node .\\scripts\\build-oracle-sft.mjs",
-    "oracle:benchmark": "node .\\scripts\\benchmark-oracle.mjs"
+    "oracle:benchmark": "node .\\scripts\\benchmark-oracle.mjs",
+    "human:knowledge:build": "node .\\scripts\\build-human-knowledge.mjs",
+    "human:sft:build": "node .\\scripts\\build-human-sft.mjs",
+    "human:ft:start": "node .\\scripts\\openai-human-finetune.mjs",
+    "human:ft:status": "node .\\scripts\\openai-human-finetune-status.mjs"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.4.1",
