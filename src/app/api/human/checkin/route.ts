@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { requireUser } from "@/lib/auth";
+import { buildHumanModelGuidance } from "@/lib/human-ai";
 import {
   buildHumanGuidance,
   makeHumanCheckinRecord,
@@ -28,8 +29,19 @@ export async function POST(request: NextRequest) {
   const previous = previousEntries[0] ?? null;
 
   const entry = makeHumanCheckinRecord(user.uid, input);
-  const guidance = buildHumanGuidance(entry, previous);
+  const deterministicGuidance = buildHumanGuidance(entry, previous);
+  const modelGuidance = await buildHumanModelGuidance({
+    entry,
+    previous,
+    fallback: deterministicGuidance,
+  });
   await appendHumanCheckin(user.uid, entry);
 
-  return NextResponse.json({ ok: true, entry, guidance });
+  return NextResponse.json({
+    ok: true,
+    entry,
+    guidance: modelGuidance.guidance,
+    guidanceSource: modelGuidance.source,
+    guidanceModel: modelGuidance.model,
+  });
 }

@@ -54,6 +54,10 @@ llama-server -m C:\path\to\your-model.gguf --host 127.0.0.1 --port 1234 -c 4096
 - Build Human OS SFT dataset: `npm run human:sft:build`
 - Start OpenAI fine-tune job: `npm run human:ft:start -- --model <base_model_id>`
 - Check fine-tune status: `npm run human:ft:status`
+- Enable fine-tuned daily guidance in `/api/human/checkin` by setting:
+  - `OPENAI_API_KEY`
+  - `HUMAN_FT_MODEL` (example: `ft:gpt-3.5-turbo-0125:...`)
+  - Optional timeout override: `HUMAN_MODEL_TIMEOUT_MS` (default `18000`)
 - Training docs and source folders: `training/human_os/README.md`
 
 ## Notes

@@ -30,6 +30,8 @@ type DailyState = {
   priority: string;
 };
 
+type GuidanceSource = "fine_tuned_model" | "deterministic";
+
 const initialDiagnostic: DiagnosticState = {
   satisfaction: "5",
   confidenceToChange: "5",
@@ -67,6 +69,8 @@ export function HumanConsole() {
 
   const [problemMap, setProblemMap] = React.useState<HumanProblemMap | null>(null);
   const [guidance, setGuidance] = React.useState<HumanGuidance | null>(null);
+  const [guidanceSource, setGuidanceSource] = React.useState<GuidanceSource>("deterministic");
+  const [guidanceModel, setGuidanceModel] = React.useState<string | null>(null);
   const [entries, setEntries] = React.useState<HumanCheckinRecord[]>([]);
   const [analytics, setAnalytics] = React.useState<HumanAnalytics | null>(null);
   const [plan, setPlan] = React.useState<HumanWeeklyPlan | null>(null);
@@ -115,6 +119,8 @@ export function HumanConsole() {
     if (!user) {
       setProblemMap(null);
       setGuidance(null);
+      setGuidanceSource("deterministic");
+      setGuidanceModel(null);
       setEntries([]);
       setAnalytics(null);
       setPlan(null);
@@ -196,8 +202,14 @@ export function HumanConsole() {
         setSending(false);
         return;
       }
-      const data = (await response.json()) as { guidance: HumanGuidance };
+      const data = (await response.json()) as {
+        guidance: HumanGuidance;
+        guidanceSource?: GuidanceSource;
+        guidanceModel?: string | null;
+      };
       setGuidance(data.guidance);
+      setGuidanceSource(data.guidanceSource ?? "deterministic");
+      setGuidanceModel(data.guidanceModel ?? null);
       await loadResults();
       setStage("results");
     } catch {
@@ -415,6 +427,10 @@ export function HumanConsole() {
               {guidance && (
                 <div className="list-item">
                   <p className="text-sm"><strong>{guidance.diagnosis}</strong></p>
+                  <p className="subtle text-xs">
+                    Source: {guidanceSource === "fine_tuned_model" ? "Fine-tuned model" : "Deterministic fallback"}
+                    {guidanceModel ? ` (${guidanceModel})` : ""}
+                  </p>
                   <ul className="oracle-bullets">
                     {guidance.todayProtocol.slice(0, 3).map((item) => (
                       <li key={item}>{item}</li>
